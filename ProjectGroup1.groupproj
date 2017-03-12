@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{79E61FED-FA68-4655-8F96-248017F44A58}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Packetlogger.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Packetlogger">
+        <MSBuild Projects="Packetlogger.cbproj"/>
+    </Target>
+    <Target Name="Packetlogger:Clean">
+        <MSBuild Projects="Packetlogger.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Packetlogger:Make">
+        <MSBuild Projects="Packetlogger.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Packetlogger"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Packetlogger:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Packetlogger:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
